@@ -5,6 +5,12 @@ public class DichSegment {
     private double rightCoordinate;
 
     public DichSegment(double leftCoordinate, double rightCoordinate) {
+        // swap if left > right
+        if (leftCoordinate > rightCoordinate) {
+            double temp = leftCoordinate;
+            leftCoordinate = rightCoordinate;
+            rightCoordinate = temp;
+        }
         this.leftCoordinate = leftCoordinate;
         this.rightCoordinate = rightCoordinate;
     }

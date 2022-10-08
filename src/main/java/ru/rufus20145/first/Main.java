@@ -180,7 +180,7 @@ public final class Main {
     private static void addNewtonPoints(List<NewtPoint> newtonPoints) {
         newtonPoints.add(new NewtPoint(1));
         newtonPoints.add(new NewtPoint(1));
-        newtonPoints.add(new NewtPoint(0));
+        newtonPoints.add(new NewtPoint(0.5));
         newtonPoints.add(new NewtPoint(2));
         newtonPoints.add(new NewtPoint(1));
         newtonPoints.add(new NewtPoint(1));
