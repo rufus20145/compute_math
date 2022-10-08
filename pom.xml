@@ -77,7 +77,7 @@
           <includeTestSourceDirectory>true</includeTestSourceDirectory>
           <skip>${skipTests}</skip>
         </configuration>
-        <executions>
+        <!-- <executions>
           <execution>
             <id>checkstyle</id>
             <phase>validate</phase>
@@ -85,7 +85,7 @@
               <goal>check</goal>
             </goals>
           </execution>
-        </executions>
+        </executions> -->
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
