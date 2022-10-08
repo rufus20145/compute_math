@@ -92,21 +92,19 @@ public final class Main {
      */
     public static int runNewton(Computable equation, NewtPoint point, double accuracy) {
         int numberOfIterations = 0;
-        double currentX = point.getCoordinate();
-        double nextX;
-        double approximation;
+        double approx;
         do {
-            double argumentIncrement = currentX * accuracy;
-            double funcValue = equation.compute(currentX);
-            double diffFuncValue = (equation.compute(currentX + argumentIncrement) - funcValue) / argumentIncrement;
-            nextX = currentX - (funcValue / diffFuncValue);
-            approximation = Math.abs(nextX - currentX);
-            currentX = nextX;
+            double curX = point.getCoordinate();
+            double argInc = curX * accuracy;
+            double funcVal = equation.compute(curX);
+            double diffFuncVal = (equation.compute(curX + argInc) - funcVal) / argInc;
+            double nextX = curX - (funcVal / diffFuncVal);
+            approx = Math.abs(nextX - curX);
+            point.setCoordinate(nextX);
             numberOfIterations++;
-            System.out.println(
-                    String.format("Iteration: %2d. Current accuracy: %.16f.", numberOfIterations, approximation));
-        } while (approximation > accuracy);
-        System.out.println("RESULT: x = " + currentX);
+            System.out.printf("Iteration: %2d. Current accuracy: %.16f.%n", numberOfIterations, approx);
+        } while (approx > accuracy);
+        System.out.println("RESULT: x = " + point.getCoordinate());
 
         return numberOfIterations;
     }
@@ -127,7 +125,7 @@ public final class Main {
         // Проверка наличия корня на сегменте
         if (equation.compute(segment.getLeft()) * equation.compute(segment.getRight()) > 0) {
             System.out.println("Wrong segment. Can`t find root.");
-            return -1;
+            return -1; // Если корня нет, то возвращаем -1
         }
 
         do {
@@ -138,8 +136,7 @@ public final class Main {
             } else {
                 segment.setLeft(centerCoord);
             }
-            System.out.println(
-                    String.format("Iteration: %2d. Current accuracy: %.8f.", numberOfIterations, segment.getLength()));
+            System.out.printf("Iteration: %2d. Current accuracy: %.8f.%n", numberOfIterations, segment.getLength());
         } while (Math.abs(segment.getRight() - segment.getLeft()) > accuracy);
 
         System.out.println(

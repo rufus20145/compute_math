@@ -5,7 +5,6 @@ public class NewtPoint {
 
     public NewtPoint(double coordinate) {
         this.coordinate = coordinate;
-
     }
 
     public double getCoordinate() {
