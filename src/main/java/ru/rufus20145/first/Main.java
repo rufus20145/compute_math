@@ -49,7 +49,7 @@ public final class Main {
 
         System.out.println("\n\n==================================================\nSecond task:");
         for (int i = SECOND_TASK_START; i < NUMBER_FOR_SECOND_TASK; i++) {
-            System.out.printf("Newton method for %s constant:\n", i == 6 ? "pi" : "e");
+            System.out.printf("Newton method for %s constant:%n", i == 6 ? "pi" : "e");
             runNewton(equations.get(i), newtonPoints.get(i), SECOND_TASK_ACCURACY);
         }
         System.out.println("==================================================");
@@ -91,33 +91,20 @@ public final class Main {
      *         точности. Если точность не была достигнута, возвращается -1.
      */
     public static int runNewton(Computable equation, NewtPoint point, double accuracy) {
-        // TODO Реализовать метод Ньютона.
         int numberOfIterations = 0;
         double currentX = point.getCoordinate();
         double nextX;
         double approximation;
-        // do {
-        // double functionIncrement = currentX * accuracy;
-        // double funcValue = equation.compute(currentX);
-        // double diffFuncValue = (equation.compute(currentX + functionIncrement) -
-        // funcValue) / functionIncrement;
-        // nextX = currentX - (funcValue / diffFuncValue);
-        // approximation = Math.abs(nextX - currentX);
-        // currentX = nextX;
-        // numberOfIterations++;
-        // System.out.println(String.format("Iteration: %2d. Current accuracy: %.8f.",
-        // numberOfIterations, approximation));
-        // } while (approximation > accuracy);
         do {
-            double functionIncrement = currentX * accuracy;
+            double argumentIncrement = currentX * accuracy;
             double funcValue = equation.compute(currentX);
-            double diffFuncValue = (equation.compute(currentX + functionIncrement) - funcValue) / functionIncrement;
+            double diffFuncValue = (equation.compute(currentX + argumentIncrement) - funcValue) / argumentIncrement;
             nextX = currentX - (funcValue / diffFuncValue);
             approximation = Math.abs(nextX - currentX);
             currentX = nextX;
             numberOfIterations++;
             System.out.println(
-                    String.format("Iteration: %2d. Current accuracy: %.8f.", numberOfIterations, approximation));
+                    String.format("Iteration: %2d. Current accuracy: %.16f.", numberOfIterations, approximation));
         } while (approximation > accuracy);
         System.out.println("RESULT: x = " + currentX);
 
@@ -170,7 +157,7 @@ public final class Main {
         equations.add(x -> Math.pow(x, 6) - 5 * Math.pow(x, 3) - 2);
         equations.add(x -> Math.log(x) - (1 / (1 + Math.pow(x, 2))));
         equations.add(x -> Math.pow(3, x) - 5 * Math.pow(x, 2) + 1);
-        equations.add(x -> Math.sin(x));
+        equations.add(Math::sin);
         equations.add(x -> Math.log(x) - 1);
     }
 
@@ -197,7 +184,7 @@ public final class Main {
         newtonPoints.add(new NewtPoint(2));
         newtonPoints.add(new NewtPoint(1));
         newtonPoints.add(new NewtPoint(1));
-        newtonPoints.add(new NewtPoint(60));
+        newtonPoints.add(new NewtPoint(3));
         newtonPoints.add(new NewtPoint(3));
     }
 }
