@@ -1,4 +1,4 @@
-package ru.rufus20145.first;
+package ru.rufus20145.computemath.hw1;
 
 public class DichSegment {
     private double leftCoordinate;
