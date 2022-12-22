@@ -60,10 +60,8 @@ public class Newton {
             double dxF2Value = dxF2.calculate(x, y, a, alpha, beta);
             double dyF2Value = dyF2.calculate(x, y, a, alpha, beta);
 
-            double detJacobi = dxF1Value * dyF2Value - dyF1Value * dxF2Value;
-
-            x1 = x - (f1Value * dyF2Value - f2Value * dyF1Value) / detJacobi;
-            y1 = y - (f2Value * dxF1Value - f1Value * dxF2Value) / detJacobi;
+            x1 = x - (f1Value * dyF2Value - f2Value * dyF1Value) / (dxF1Value * dyF2Value - dyF1Value * dxF2Value);
+            y1 = y - (f2Value * dxF1Value - f1Value * dxF2Value) / (dxF1Value * dyF2Value - dyF1Value * dxF2Value);
             numberOfIterations++;
         } while (norm2(f1.calculate(x1, y1, a, alpha, beta), f2.calculate(x1, y1, a, alpha, beta))
                 && norm2(x - x1, y - y1));
