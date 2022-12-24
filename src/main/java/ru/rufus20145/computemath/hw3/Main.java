@@ -28,8 +28,8 @@ public class Main {
         System.out.println("     МПИ:");
         SimpleIterations.forList(problems);
 
-        // System.out.println("     Метод Зейделя:");
-        // Zeidel.forList(problems);
+        System.out.println("     Метод Зейделя:");
+        Zeidel.forList(problems);
     }
 
     private static void addTask1(List<double[][]> problems) {
