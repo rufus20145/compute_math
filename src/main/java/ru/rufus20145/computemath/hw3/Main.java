@@ -7,6 +7,8 @@ public class Main {
 
     private static final double ACCURACY = 1e-15;
 
+    // TODO: реализовать класс с ответом, в котором будет храниться номер уравнения,
+    // номер метода, номер нормы, количество итераций, точность, вектор решения
     public static void main(String[] args) {
 
         List<double[][]> problems = new ArrayList<>();
